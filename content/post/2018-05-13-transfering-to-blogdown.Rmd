@@ -1,15 +1,36 @@
 ---
-title: Transfering to Blogdown
+title: New Blogdown Website Launch!
 author: Jenny
 date: '2018-05-13'
-slug: transfering-to-blogdown
+slug: New-Blogdown-Website-Launch
 categories:
   - Other
 tags: []
+thumbnailImagePosition: "left"
+thumbnailImage: "https://res.cloudinary.com/jsnape22/image/upload/c_crop,h_389,w_584/v1526418872/4765138953_b6b930bded_z.jpg"
+summary: Welcome to my brand new and shiny 'Blogdown' website! My blog is now moved from its old home (jennysnape.wordpress.com) to this website made in Rstudio using the blogdown framework. 
+
 ---
+<center>
+![](https://res.cloudinary.com/jsnape22/image/upload/c_crop,h_389,w_584/v1526418872/4765138953_b6b930bded_z.jpg)
+</center>
+Welcome to my brand new and shiny 'Blogdown' website! I have wanted to transfer from my wordpress.com blog for a while now and last weekend I finally did some investigating into my alternative options. I considered using a self hosted wordpress.org site which would allow me more control over my site but would fundamentally still use the same wordpress framework. Generally this seems to be what most regular bloggers use. However I noticed that the specialist R blogs I follow use something called 'blogdown' instead. This is a blogging R package that allows you to create a blog from within Rstudio.  Since all my analysis is currently done in R, it made sense to me to go down the blogdown route. This will allow me to intergrate my analysis and blog posts which should save time as I no longer will need to keep switching between R and wordpress (perfect for someone who is lazy like me!). 
 
-Hello and Welcome to my brand new, shiny and updated website. I have wanted to transfer from my wordpress blog for a while now...
+I used the following guide to get set up. In total it took me about 4 hours to go through the steps and get a simple website published using 'Netlify' (a free service that rolls out static websites). The basic steps are:
 
-## Test
+- Install blogdown package on R studio
+- Start a new website project in Rstudio (one of the default options when you start a new project)
+- Load your chosen theme (options from this website)
+- Change some of the basic info in the theme template e.g. name, photo
+- Link the project up with your github account
+- Link your github account up with Netlify which can launch the website
+
+I then changed my default Netlify domain name to a custom domain I had bought and my new website was ready to go! I will be using this site from now on (although my old site will remain up for now). I am currently working on getting my old posts transfered across so hopefully eventually everything will be avaliable here. 
+
+What do you think of the new blog?
+Let me know!
+
+
+
 
 
