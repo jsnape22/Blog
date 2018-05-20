@@ -1,0 +1,50 @@
+---
+title: Does everybody love Black Panther?
+author: Jenny
+date: '2018-03-08'
+slug: does-everybody-love-black-panther
+categories:
+  - R
+  - Webscraping
+tags:
+  - Sentiment Analysis
+thumbnailImagePosition: "left"
+thumbnailImage: "http://res.cloudinary.com/jsnape22/image/upload/v1526725892/BlackPanther/black_panther_poster.jpg"
+summary: Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.There are definitely worse things to do on a hangover, however I have a feeling my pounding headache combined with the fact that I'm not really a marvel fan anyway (this was only the second marvel film I had ever seen) may be the reason I was the only person in the cinema who did not enjoy the film. Don't get me wrong I enjoyed the visual effects and light hearted humour, It's just that I had major issues with the plot line and thought I was going to be sick most of the way through. Anyway, almost everyone else I have talked to seemed to have loved the film. In fact it is the highest grossing film of 2018 so far. That got me wondering about what data is available online about the movie and what can it tell us about what people really thought of the film.
+---
+
+
+
+<div id="web-scraping-reviews-of-marvels-black-panther-from-rotten-tomatoes-using-r" class="section level2">
+<h2>Web Scraping Reviews of Marvel’s Black Panther from Rotten Tomatoes using R</h2>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526725892/BlackPanther/black_panther_poster.jpg" />
+</center>
+<p>Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.There are definitely worse things to do on a hangover, however I have a feeling my pounding headache combined with the fact that I’m not really a marvel fan anyway (this was only the second marvel film I had ever seen) may be the reason I was the only person in the cinema who did not enjoy the film. Don’t get me wrong I enjoyed the visual effects and light hearted humour, It’s just that I had major issues with the plot line and thought I was going to be sick most of the way through. Anyway, almost everyone else I have talked to seemed to have loved the film. In fact it is the highest grossing film of 2018 so far. That got me wondering about what data is available online about the movie and what can it tell us about what people really thought of the film.</p>
+<p>Rotten Tomatoes is one of the biggest movie review sites, containing reviews from critics and the public together in one place. When I looked at the black panther site there were loads of pages of reviews to have a look at. In order to extract the data for analysis I used a technique called web scraping.</p>
+<p>Web scraping is the process of extracting information from websites. Some data online is published in a downloadable format (csv, excel etc.) and some data is easily accessible through an API. However other types of data online is not so easy to access, for example, printed on the website as text or in html tables.You could manually copy the data yourself into an excel spreadsheet or text file, however for large amounts of data this is time consuming. Especially if you want to repeat the process lots of times. An alternative is to automate the process using a computer program. In order to scrap my data I used an R package called ‘Rvest’. This package has a functions to read html from a given website and then use the website CSS codes to extract the data you are interested in and covert it into a character vector. The R code below shows how I got my review data from rotten tomatoes in 3 simple steps (I used this post to learn about Rvest).</p>
+<pre class="r"><code>webpage &lt;- read_html(&quot;https://www.rottentomatoes.com/m/black_panther_2018/reviews/
+                     ?page=1&amp;type=user&amp;sort=&quot;)
+review_data_html &lt;- html_nodes(webpage,&#39;.user_review&#39;)
+review_data &lt;- html_text(review_data_html)</code></pre>
+<p>Getting the correct CSS code can be tricky. However you don’t actually need to know anything about how CSS works or have to spent time searching through html code to find it. Instead you can use a plugin for the google chrome browser called the ‘selected gadget’ that allows to select the text you are looking to scrap from a website and returns the corresponding CSS code. I would highly recommend using this tool as it making web scraping super easy. You can see how to install it here:</p>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526675965/BlackPanther/Screen_Shot_2018-03-08_at_19.29.47.png" />
+</center>
+<p>Using the Google Selector Gadget to find the CSS Code So its very easy to scrap data from a single website. However the rotten tomatoes Black panther reviews are not on a single page - there are 80+ pages of reviews that you can navigate using the buttons at the bottom of the page. In order to scrap data from all the pages I noticed that the only difference between the urls of each page was the page index value. This meant I could easily automate the process by writing a for loop that cycled through each of the webpages and save the reviews from each page.</p>
+<p>From doing this I ended up with a character vector of reviews. I then could do some analysis of these reviews. Below is the results of a sentiment analysis on the reviews and also a word cloud of the reviews. (see this post for how I leant about text analysis)</p>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526675995/BlackPanther/Black_Panther.png" />
+</center>
+<blockquote>
+<p>No reviews contained the word “hangover” :(</p>
+</blockquote>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526676005/BlackPanther/Black_Panther2.png" />
+</center>
+<blockquote>
+<p>R output of Sentiment Analysis on Black Panther Reviews. Mean = 1.7, SD = 4.2</p>
+</blockquote>
+<p>I found that out of 299 reviews, only 57 had a negative sentiment (around 20%).  There were 2 notable outliers with scores of -12 and 47 each. Taking a closer look at these, I found that that the authors loved/hated the movie so much, they wrote a VERY long review. The average number of words per review for all the reviews was 70 but these reviews were 1720 words and 1367 words in length! Perhaps this makes sense though as it would require more words to get an extreme sentiment score.</p>
+<p>In conclusion, to answer my original question, although the majority of reviews are positive (some very positive!) there are still some negative reviews. So I’m not completely alone in my dislike of the film. Although I am probably the only one who blamed my hangover…</p>
+</div>

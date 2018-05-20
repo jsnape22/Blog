@@ -1,0 +1,63 @@
+---
+title: 'Code First Girls: Python course review'
+author: Jenny
+date: '2018-03-30'
+slug: code-first-girls-python-course-review
+categories:
+  - Python
+  - Web development
+tags:
+  - Courses
+  - Review
+
+thumbnailImagePosition: "left"
+thumbnailImage: "https://res.cloudinary.com/jsnape22/image/upload/v1526728550/CodeFirstGirls/819501293-cfg.png"
+
+---
+
+<center>
+![](https://res.cloudinary.com/jsnape22/image/upload/v1526728550/CodeFirstGirls/819501293-cfg.png)
+</center>
+
+For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby. I picked the IG London python course. This was for a few reasons - firstly I had done some front-end programming before so thought the beginners course might not teach me that much new. Also I have been intending on learning Python for a while now - I've had Spyder downloaded on my computer since Christmas with the intention of learning how to do statistical analysis in Python the same way as in R, however I've never quite got round to it. Therefore this seemed like a great opportunity to learn the basics of Python and get started. The advantage of doing a class (instead of trying to teach yourself online) is that you have a set time every week to focus on learning with professional teachers to help you when you get stuck and cover the details you might miss on your own. I often get distracted trying to learn things at home and overwhelmed by the amount of different courses and learning resources available. Finally I chose the IG course because it was the nearest to my work and I could walk there easily after work - very convenient for me !
+
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526728264/CodeFirstGirls/python-logo-master-v3-TM.png)
+</center>
+
+
+###Overview of the Course
+
+The course is run in 8 sessions that cover: the basics of Python programming, the BASH command line, git and git hub, the Flask framework, using APIs, deploying websites onto heroku and finally, putting it all together in a group project! The sessions were generally taught as lectures with tasks / things to follow along with on our own computers. If we got stuck (this happened a lot) there were other instructors in the class to help get us back on track. We were also set optional homework as well to help us practice what we had learned.  In the last 2 weeks of the course we got into small groups (of 2 or 3) and worked on a group project. This was probably the best part of the whole course as it gave us a chance to really put into practice everything we had learnt and working in teams was actually really fun. At the end we all presented what we had done and the instructors picked a winner, while we celebrated finishing the course with pizza and wine.
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526728265/CodeFirstGirls/FlaskLogo.png)
+</center>
+
+###My Group Project
+
+We had many ideas for our project - however most of them were far too complex or difficult for us to achieve in a week in our spare time. In the end, we decided to use the twitter API to extract tweets based on their hashtag. We then plotted the location of these tweets on a map using the google maps API. My group split the project into three parts and assigned everyone a role.
+
+1. Extracting the tweets & locations from the twitter API
+
+2. Plotting the locations on google maps
+
+3. Building the front end website and accepting user inputs
+
+Our final project was made up of 1 python flask file, 3 HTML files (for the home page, map page and the about page), 1 css file and 1 javascript file that used the google maps API to plot the map and tweet location. (Let me know if you would be interesting in finding out more detail about our code & the different files and I can do another post about how we did it.)
+
+Some of the issues we had were finding tweets that had a location listed as the majority of tweets do not. We had to extract loads of tweets and then cycle through them all to extract just the ones with a location. Also after getting the locations we had to reformat the data to get it into the right JSON format to go into the javascript map file. None of our team were very skilled at website design and we struggled to come up with an "attractive design". If we had more time we definitely would have worked on this!
+
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526728281/CodeFirstGirls/Screen_Shot_2018-03-30_at_10.40.51.png)
+</center>
+>Our Group Project - Find it at https://gentle-wave-67373.herokuapp.com/map
+
+My group actually won the group project! Although everyone had done cool websites / programmes, we were picked as we have successfully linked both the front and back ends of the website and had worked as a team using GitHub successfully!.
+
+###What I Learnt and Recommendations 
+
+The course starts quite slow, I already knew some of the basic python we were taught at the start (variables, functions, for loops etc.). But after the first 2 sessions, everything I learnt was new! My biggest takeaways from this course are how to use the Flask framework in python and a general understanding of how applications are built. I also learnt about using the Bash command line and GitHub which I had never come across before. Learning to use the command line blew my mind, I can't believe I never knew about that before! I loved meeting so many other women who are passionate about tech and have been inspired to learn more and seek out other opportunities like this one.
+
+The free course are only open to  students or those who graduates in the last 2 years - I graduated just under 2 years ago so I'm not sure if I will qualify for another course (I'd been keen to do the Ruby one) which is a shame. I wish I had known about these courses earlier! Its amazing that this course was free, and I am extremely thankful to codefirstgirls and the sponsors for offering these opportunities. If you are interested in doing a similar course more information is on their website including how to apply!

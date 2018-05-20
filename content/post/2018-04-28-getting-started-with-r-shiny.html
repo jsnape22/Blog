@@ -1,0 +1,46 @@
+---
+title: Getting Started with R Shiny
+author: Jenny
+date: '2018-04-28'
+slug: getting-started-with-r-shiny
+categories:
+  - Visualisation
+  - R
+tags:
+  - Old Content
+  - Mapping
+thumbnailImagePosition: "left"
+thumbnailImage: "http://res.cloudinary.com/jsnape22/image/upload/v1526813687/Rshiny/Screen_Shot_2018-04-28_at_14.45.14.png"
+summary: This post was inspired by this [competition](https://blog.jumpingrivers.com/posts/2018/jumping_rivers_erum/), hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I've been working on my visualisation skills in R so I thought I would have a go at entering.
+
+---
+
+
+
+<div id="interactive-visualisations-in-r" class="section level3">
+<h3>Interactive Visualisations in R</h3>
+<div class="figure">
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526813687/Rshiny/Screen_Shot_2018-04-28_at_14.45.14.png" />
+
+</div>
+<p>This post was inspired by this <a href="https://blog.jumpingrivers.com/posts/2018/jumping_rivers_erum/">competition</a>, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</p>
+<p>Geographical data always works well plotted on a map and since there is a lot of information to visualise from all over the world, I decided to incorporate an element of interactivity. The easiest way to do this using R is through the RShiny package. Therefore this project was made up of 2 steps: extracting the data to get it in a form to be visualised and then creating an interactive Rshiny app showing the locations of the different groups on a map.</p>
+</div>
+<div id="to-extract-the-data" class="section level2">
+<h2>To Extract the Data:</h2>
+<p>The files on <a href="https://github.com/jumpingrivers/meetingsR/">github</a> can be read into R as character vectors (where each line is a element of the vector) using the R “readLines” function.</p>
+<p>From this character vector, we need to extract the country, the group name and url. This can be done by recognising that each line containing a country starts with a ‘##’ and each line containing the group name and url starts with a ’*‘. Therefore we can use these ’tags’ to cycle through each element of the character vector and pull out vectors containing the countries, the cities and the urls of the R groups.  These vectors can then be cleaned and joined together into a data frame.</p>
+<p>I wrote these steps into a function that accepted each R group character vector as an input and returned the final data frame. As one of the data sets contained just R Ladies groups, I fed this in as an argument and returned it as a column in the final data frame in order to differentiate between the different group types. I also returned a variable based on the character vector input in order to differentiate between the different world continents.</p>
+<p>Running this function on each of the character vectors creates separate data sets which can then be all joined together. This creates a final dataset containing all the information on each R group: the type of group, the url, the city and the region.</p>
+<div id="to-visualise-the-data" class="section level3">
+<h3>To Visualise the Data</h3>
+<p>Previous to this project I had heard of Rshiny but had never used it. To understand the basics I watched the <a href="https://shiny.rstudio.com/tutorial/">tutorials</a> on the Rstudio shiny website which was all I needed to get started. Having done visualisations using D3 in javascript I was familiar with the Shiny setup that has a user interface and server function. The user interface controls the look of the webpage and accepts inputs from users. This information is passed to the server which carries out the R analysis. The output from the server is then passed back to the user interface to be viewed on the website. There are prewritten codes in Shiny that can give you a whole variety of inputs (e.g. drop out boxes, selections, search bars) and outputs (graphs, tables, text etc.) so you don’t need any specialist programming knowledge to get going. I was surprised how quickly you can convert R code into an interactive visualisation. <img src="http://res.cloudinary.com/jsnape22/image/upload/v1526813687/Rshiny/Screen_Shot_2018-04-28_at_14.46.50.png" /> &gt;A snapshot of my Rshiny App</p>
+<p>For the visualisation I used the leaflet package to plot world maps entered on different continents. I then plotted the locations of different R groups depending on which groups had been selected by the user. One of the issues I found was trying to use the user input to trigger the correct version of the code to run. I got stuck trying to create for loops with the user inputs and in the end I wrote a separate section of code for each possible user input which is probably not the most efficient way. However it works which was the most important thing!</p>
+<p>There are then different ways you can launch your app after they have been created. The simplest way for me was to use the shinyapps.io website. Following the site instructions I launched my <a href="https://jennifersnape.shinyapps.io/leaflet_app/">app</a> which can be found at <a href="https://jennifersnape.shinyapps.io/leaflet_app" class="uri">https://jennifersnape.shinyapps.io/leaflet_app</a> . My app is fairly basic in terms of the website design. There are ways to make it look more professional by adding html into your Shiny code but this is something that requires a little bit more time to learn and is not required if you just want to explore data.</p>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<p>So my visualisation did not win the Jumping Rivers competition.However it was not a complete waste of time because it was a good excuse for me to learn R shiny and I did actually get a prize for the secondary competition for my GitHub extraction code. See this <a href="https://blog.jumpingrivers.com/posts/2018/erum2018-competition-winners/">blog</a> for details on the winners of the competition and my extract code. !</p>
+<p><strong>A note on RShiny vs D3:</strong> As I mentioned previously I have now used both D3 and Rshiny to create interactive visualisation and I thought I would quickly do a comparison for those who are wondering which is better. The biggest advantage of R shiny is that it is A LOT easier to use than D3. Anyone who can use R can use Rshiny. You don’t need any specialist coding knowledge, you don’t need to understand HTML and probably all the functionality you’ll require in Rshiny has already been built-in. In contrast, D3 is a javascript library and you need to be comfortable with javascript, HTML and CSS as well as building websites before you can get going with D3. With Rshiny it is super easy and quick to build a visualisation to explore data or allow others to explore data in an informal way. The main disadvantage of RShiny is that it is less flexible and it is more difficult to integrate into your website. You have a lot more control over how the visualisation works and how it looks like in D3. In conclusion both are good but I would be more likely to use Rshiny for more informal visualisations and D3 for something more professional that was to be integrated with a website.</p>
+</div>
+</div>

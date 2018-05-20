@@ -11,11 +11,74 @@
     
     
     <item>
+      <title>Maths</title>
+      <link>/categories/maths/</link>
+      <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/maths/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimisation</title>
+      <link>/categories/optimisation/</link>
+      <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/optimisation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Other</title>
       <link>/categories/other/</link>
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       
       <guid>/categories/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/categories/python/</link>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/categories/r/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visualisation</title>
+      <link>/categories/visualisation/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/visualisation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Development</title>
+      <link>/categories/web-development/</link>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/web-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webscraping</title>
+      <link>/categories/webscraping/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/webscraping/</guid>
       <description></description>
     </item>
     

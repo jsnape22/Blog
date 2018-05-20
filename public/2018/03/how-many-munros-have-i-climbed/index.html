@@ -1,0 +1,797 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
+    <title>How many Munros have I climbed?</title>
+    <meta name="author" content="Jennifer Snape">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.">
+    <meta property="og:description" content="Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="How many Munros have I climbed?">
+    <meta property="og:url" content="/2018/03/how-many-munros-have-i-climbed/">
+    <meta property="og:site_name" content="Jennifer Snape | Data Science">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jennifer Snape | Data Science">
+    <meta name="twitter:description" content="Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.">
+    
+      <meta name="twitter:creator" content="@jennifersnape">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg">
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526726363/Munros/10962619055_3dce1b7715_z.jpg">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113518615-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Jennifer Snape | Data Science</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Jennifer Snape</h4>
+        
+          <h5 class="sidebar-profile-bio">Interesting data science and mathematical projects!</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/jsnape22">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/JenniferSnape">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.instagram.com/snapejenny">
+    
+      <i class="sidebar-button-icon fa fa-instagram"></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/jennifer-snape-33115098/">
+    
+      <i class="sidebar-button-icon fa fa-linkedin-square"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      How many Munros have I climbed?
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-03-18T00:00:00Z">
+        
+  March 18, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/visualisation">Visualisation</a>, 
+    
+      <a class="category-link" href="/categories/r">R</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="mapping-the-munros-in-r-using-ggmap" class="section level2">
+<h2>Mapping the Munros in R using ggmap</h2>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526726363/Munros/10962619055_3dce1b7715_z.jpg" />
+</center>
+<p>After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps.  You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.  I followed the guide in the following blog post to get started.</p>
+<p>GGmap has a function called “get_map” that allows you to access a map of your choice from google maps (or from other types of maps such as OpenStreeMap). You can pick your location through text (e.g “London”) or you can input specific longitude and latitude points. You also chose the zoom which determines what scale you want to your map to be and the type of map (Satellite, Roadmap etc.).  After this you can use ggplot2 functions to, for example’ add data points to the map to get a visual look at the locations of your data.</p>
+<div id="the-data" class="section level3">
+<h3>The Data</h3>
+<p>My chosen data set comes from this database of Scottish Munros. Munros are mountains in Scotland that are over 3000 feet. They are named after Sir Hugh Munro who first produced the list of these mountains in 1891. Climbing all of them is no easy task though as there are 282 of these mountains and some of them are in extremely remote locations or require specialist climbing equipment to reach the top. They are also scattered out across Scotland  in a number of different mountain ranges. In this project I am going to plot the location of these 282 mountains across Scotland. Also, because I actually have climbed a few of these mountains (Ok only 6 out of 282) I will visualise the mountains that I have and haven’t climbed.</p>
+</div>
+<div id="data-wrangling-plotting" class="section level3">
+<h3>Data Wrangling &amp; Plotting</h3>
+<p>My dataset came with grid reference coordinates instead of latitude and longitude coordinates. As the mapping package I am using requires latitude and longitude values, the first step was to convert my grid references which I did through this website.  Next I needed to get my base map using the “get_map” function. Through some trial and error I decided to centre my map of Aviemore with a zoom of 7.  This can be plotted using ggmap.</p>
+<p>To add data on top of the map you add  a geom_point function using your chosen dataset. For me this was my Munro table with latitude and longitude values. I also added a variable to indicate whether I had climbed the mountain or not called “climb”. When plotted, I could allow the colour of the points to vary depend on this variable. I also changed the size of the points to make it easier to identify the mountains I had and hadn’t climbed.</p>
+<pre><code>Scotland_map &lt;- get_map(&quot;aviemore&quot;, zoom =7)
+g =ggmap(Scotland_map) +
+  geom_point(data=Munro3, aes(x=lon, y=lat, size=factor(climb), 
+  color=factor(climb)),
+              alpha = 0.8, shape=20)
+g+ scale_color_manual(values = c( &quot;darkblue&quot;, &quot;magenta&quot;), 
+labels=c(&quot;No&quot;, &quot;Yes&quot;))+ 
+  scale_size_manual(values = c(1, 3), guide=&quot;none&quot;)+
+  theme(axis.title.y = element_blank(), 
+        axis.title.x = element_blank())+
+  ggtitle(&quot;Map of the Scottish Munros&quot;) +labs(color=&quot;Climbed?&quot;)
+</code></pre>
+</div>
+<div id="final-map" class="section level3">
+<h3>Final Map</h3>
+This is my final plot of the Scottish Munros including the few I have climbed!
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526726332/Munros/Munro2.png" />
+</center>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>There a clearly a lot of high mountains in Scotland, of which I have climbed very few… I’m not going to make it into the Munro “bagging” club any time soon.</p>
+<p>As for the plotting - the most difficult part was, as it often is, the data wrangling. It took some time to make sure all my mountains had the correct longitude and latitude points as some got coded to the wrong values or were not recognised by the conversion programme. I found a package called “googleway’ that uses the google maps api to get the longitude and latitudes of points from just the address to fill in the gaps! I also had difficulties making sure all my map fit on the screen without being too far zoomed out to be able to see the individual points. However overall I was impressed with ggmap and how easy it was to plot my points.</p>
+</div>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/mapping/">Mapping</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/code-first-girls-python-course-review/" data-tooltip="Code First Girls: Python course review">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/does-everybody-love-black-panther/" data-tooltip="Does everybody love Black Panther?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/03/how-many-munros-have-i-climbed/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/03/how-many-munros-have-i-climbed/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/03/how-many-munros-have-i-climbed/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Jennifer Snape. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/code-first-girls-python-course-review/" data-tooltip="Code First Girls: Python course review">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/does-everybody-love-black-panther/" data-tooltip="Does everybody love Black Panther?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/03/how-many-munros-have-i-climbed/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/03/how-many-munros-have-i-climbed/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/03/how-many-munros-have-i-climbed/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F03%2Fhow-many-munros-have-i-climbed%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F03%2Fhow-many-munros-have-i-climbed%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F03%2Fhow-many-munros-have-i-climbed%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Jennifer Snape</h4>
+    
+      <div id="about-card-bio">Interesting data science and mathematical projects!</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        statistician
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        London, Uk
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/new-blogdown-website-launch/">
+                <h3 class="media-heading">New Blogdown Website Launch!</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Welcome to my brand new and shiny ‘Blogdown’ website! I have wanted to transfer from my wordpress.com blog for a while now and last weekend I finally did some investigating into my alternative options. I considered using a self hosted wordpress.org site which would allow me more control over my site but would fundamentally still use the same wordpress framework. Generally this seems to be what most regular bloggers use.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/getting-started-with-r-shiny/">
+                <h3 class="media-heading">Getting Started with R Shiny</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Interactive Visualisations in R  This post was inspired by this competition, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/my-top-10-films-about-maths/">
+                <h3 class="media-heading">My top 10 Films about Maths</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Although not quite a mainstream genre, there are plenty of films about mathematicians or featuring applications of maths. I find these films oddly comforting and I’ve watched many of the films on this list over and over again. I love discovering new mathematical films so I thought I’d put together a list of my favourites to help give someone else some inspiration for their next movie night in. Here is a countdown of my personal top 10 (plus honourable mentions).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/code-first-girls-python-course-review/">
+                <h3 class="media-heading">Code First Girls: Python course review</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/how-many-munros-have-i-climbed/">
+                <h3 class="media-heading">How many Munros have I climbed?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/does-everybody-love-black-panther/">
+                <h3 class="media-heading">Does everybody love Black Panther?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Web Scraping Reviews of Marvel’s Black Panther from Rotten Tomatoes using R   Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/who-has-won-the-most-brit-awards/">
+                <h3 class="media-heading">Who has won the most Brit Awards?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Visualising the Brit Awards using ggplot2   When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called ‘ggplot2’ that everyone seemed to be using. I decided I needed to do my research and find out what all the hype is about.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/when-should-you-take-your-driving-test/">
+                <h3 class="media-heading">When should you take your driving test?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/01/does-taylor-swift-have-a-big-reputation/">
+                <h3 class="media-heading">Does Taylor Swift have a big reputation?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         9 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://res.cloudinary.com/jsnape22/image/upload/v1526331556/23bg_18.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/03\/how-many-munros-have-i-climbed\/';
+          
+            this.page.identifier = '\/2018\/03\/how-many-munros-have-i-climbed\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

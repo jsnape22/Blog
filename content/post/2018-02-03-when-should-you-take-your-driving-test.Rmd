@@ -1,0 +1,108 @@
+---
+title: When should you take your driving test?
+author: Jenny
+date: '2018-02-03'
+slug: when-should-you-take-your-driving-test
+categories:
+  - Maths
+  - R
+  - optimisation
+tags:
+  - Old Content
+thumbnailImagePosition: "left"
+thumbnailImage: "http://res.cloudinary.com/jsnape22/image/upload/v1526667917/DrivingTest/Screen_Shot_2018-05-18_at_19.24.42.png"
+summary: Back before I moved to London and had to get rid of my car (*sob*), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money? I always figured there would be some mathematical optimisation technique to come up with an answer that takes the price of driving lessons, the price of a driving test and a function that estimates your likelihood of passing the driving test given the number of lessons you’d had. However this always seemed to hurt my head too much to work out especially given I was trying to concentrate on driving at the same time.  However since starting this blog I decided to explore this idea I’ve had for a few years and try to work it out.
+---
+
+###Mathematical Optimisation in R
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526667917/DrivingTest/Screen_Shot_2018-05-18_at_19.24.42.png)
+</center>
+Back before I moved to London and had to get rid of my car (*sob*), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money? I always figured there would be some mathematical optimisation technique to come up with an answer that takes the price of driving lessons, the price of a driving test and a function that estimates your likelihood of passing the driving test given the number of lessons you’d had. However this always seemed to hurt my head too much to work out especially given I was trying to concentrate on driving at the same time.  However since starting this blog I decided to explore this idea I’ve had for a few years and try to work it out.
+
+###Setting up the problem
+
+To begin the optimisation I need to calculate the total cost of passing a driving test, which I will then aim to minimise. Assuming one driving lesson a week at the cost of £42 (I think mine were roughly this price) and that each driving test taken costs £62, then the total cost can be calculated by:
+
+<center>
+**Total Cost = (42 xTotal weeks) + (62 x number of tests taken)**
+</center>
+
+I decided that in the first 3 weeks of learning to drive, my probability of passing my test was 0 since it took me that long to learn the basics (how to start, how to stop, how to go over a roundabout without panicking etc.) Therefore I put the first 3 weeks of lessons at a set cost of £42 x 3 = £126 and instead of measuring total weeks, I could measure the number of weeks after the first 3 (So weeks + 3 = Total Weeks).  Therefore my total cost that I want to try and minimise is:
+
+<center>
+
+**Total Cost = 126 + (42 x weeks) + (62 x number of tests taken )**
+**where Total Weeks = weeks + 3**
+</center>
+
+I am going to model the number of times taken to pass a driving test as a random variable with a geometric distribution. This is the distribution of how many tries it takes to get a success if the probably of success in each attempt is p. There is a number of assumptions with this type of distribution which might not necessary hold in real life (I will discuss this later) but for now, it's a simple way to start.
+
+<center>
+**Number of tries to pass test = Geom(p)**
+</center>
+
+It is unlikely that p is a fixed value in this problem as the more driving lessons you have, the more likely you are to pass your test. Therefore I need p to depend to the number of weeks of lessons you have had. This means I need a distribution for p. As it is a probability, the distribution needs to go between 0 and 1 for all positive values (of weeks). I had a few tries to come up with something that might be suitable...
+
+###TRY 1
+
+I started with a distribution of the form y = x/(x+c) where c is a chosen constant. This is because I knew I needed something that would start from 0 when number of weeks is 0 but would asymptotically go to 1 as weeks went to infinity. This distribution fit these requirements so I thought it might be an easy way to start. Here c would depend on how quickly your driving skills progress. I modelled this on my 17 year old self by thinking after how many weeks was I 50% likely to pass my test. After a little thought and some guess-work, I decided on 15 weeks. Remembering that for me weeks = total weeks - 3, that would make c = 12.(Plug in 12 weeks and you can see the probability is 0.5.)
+<center>
+
+**P = weeks / (weeks + 12)**
+
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526666799/DrivingTest/Driving1.png)
+</center>
+So now I have a distribution of the number of tries to pass my test. However since this is random variable, its actual value on any given week still depends on chance. Therefore I decided to look at the expectation instead. This is the most likely value to come up - the expected value. For a geometric distribution this is calculated by 1/p. Substituting this all into my total cost formula I got:
+
+<center>
+**Total cost = 126 +(42 x weeks) + {62 x (weeks + 12)/weeks}**
+</center>
+
+We can plot this on a graph and see roughly where the minimum point occurs. To be more specific you can use calculus to work out the exact value by differentiating and setting this to 0. The final value that comes out is roughly 4.2 weeks meaning the total number of weeks would be approximately 7. The probability of passing at this point is   only 3 tests in 10 and the total cost is £542.
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526666798/DrivingTest/Driving2.png)
+</center>
+
+Now this does not seem very likely to me. After 7 weeks of lessons I was probably still panicking about how to do roundabouts and I hadn’t even considered the idea of doing a parallel park. So whats going on? Lets take another look at my chosen distribution of p. The curve is very steep between 0 and 12 suggesting that in the first 12 weeks you progress extremely fast but after this the curve gets very gradual, even by 50 weeks your probability of passing is still only 4 in 5. Is this really how driving ability progresses? Perhaps it is more likely at the start your probability remains low, only increasing slightly until you get to a certain point and it clicks! After that you progress much faster. I decided to try to come with a new distribution for p again with this in mind.
+
+###TRY 2
+
+If I wanted a distribution that fit my idea of how driving skill processes I recognised I would probably need a piece-wise function: that is a model of driving skills until you reach that “clicking point” and then a model for after. To think about what would make sense, I thought back to my driving lessons again and considered how likely I was to pass after given amount of weeks. After very unscientifically thinking about my abilities and discussing in length with my boyfriend, I decided that a quadratic distribution might fit the first half of piece-wise function. This distribution starts gradual but then increases with time. I wanted something of the form y=cx^2. Again I used the half way point (15 lessons has probability 0.5) to come up with a value for c. In this case my formula was:
+
+<center>
+**p = weeks^2/288.**
+</center>
+
+After this point I would need a formula to go asymptotically go towards 1. For ease, I chose to have the second formula to be of the same form as what I used in my first try. Putting these  two formulas together required a little bit of a tinkering to get both of the functions to join at the “clicking point”.  (I chose this point to be at the half way point at p=0.5. ) The R code below shows my final cost model which calculates the probability of passing a driving test using the function New_prob.
+
+```
+new_prob <- function(x){
+  if(x<=12){
+    prob <-(1/288)*x^2
+  }
+  else if (x>12){
+    prob <- ((x-12)/(2*(x-12)+4))+0.5
+  }
+  return(prob)
+}
+
+f2 <- function (x) (126+(42*x)+62*(1/new_prob(x)))
+optimise(f2, c(0,100))
+```
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526666812/DrivingTest/Driving3.png)
+</center>
+
+To optimise my piece-wise function I opted for the easy method - using a function in R. The function I used was called optimise from the stats package. When I plugged in the function for total cost, out popped an answer of 9.5. Therefore that would make the minimum of total weeks between 12 and 13. This seemed more realistic to me than my first attempt.  Although according to my function at this time, you would still only be likely to pass 1 in 3 driving test that you take.
+
+The total cost is estimated to be approximately £723! I think I actually took around 20 weeks to pass my test (although I did pass first time!) which means according to my model I over paid for my licence by around £180! Ouch! Lucky for me my parents paid though ;).
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526666823/DrivingTest/Driving4.png)
+</center>
+
+###Conclusions
+
+There are some flaws in my model of course, aside from the very unscientific way I modelled improvement in driving skill. The assumptions of the geometric distribution are that each try is identical and independent of each other. This does not allow for any improvement in driving ability the more tests you do (and fail). You might expect that after doing 1 test you would have a better idea of what to expect and would be more likely to pass next time. Therefore the model likely over estimates the cost of passing a driving test. In reality the minimum cost is probably a bit lower...
+
+However I think my main takeaway message from this research is still valid: it makes sense to take your test a little bit before you are certain to pass, perhaps even when you are only likely to pass 1 driving test in 3 - gamble on your ability - it is likely to pay off!

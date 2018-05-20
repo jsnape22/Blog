@@ -6,20 +6,64 @@
     <description>Recent content in R on Jennifer Snape | Data Science</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/2015/07/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Getting Started with R Shiny</title>
+      <link>/2018/04/getting-started-with-r-shiny/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2015/07/hello-r-markdown/</guid>
-      <description>R Markdown JENNIFER SNAPE TEST TEST TEST This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.</description>
+      <guid>/2018/04/getting-started-with-r-shiny/</guid>
+      <description>Interactive Visualisations in R  This post was inspired by this competition, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</description>
+    </item>
+    
+    <item>
+      <title>How many Munros have I climbed?</title>
+      <link>/2018/03/how-many-munros-have-i-climbed/</link>
+      <pubDate>Sun, 18 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/03/how-many-munros-have-i-climbed/</guid>
+      <description>Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.</description>
+    </item>
+    
+    <item>
+      <title>Does everybody love Black Panther?</title>
+      <link>/2018/03/does-everybody-love-black-panther/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/03/does-everybody-love-black-panther/</guid>
+      <description>Web Scraping Reviews of Marvel’s Black Panther from Rotten Tomatoes using R   Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.</description>
+    </item>
+    
+    <item>
+      <title>Who has won the most Brit Awards?</title>
+      <link>/2018/02/who-has-won-the-most-brit-awards/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/who-has-won-the-most-brit-awards/</guid>
+      <description>Visualising the Brit Awards using ggplot2   When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called ‘ggplot2’ that everyone seemed to be using. I decided I needed to do my research and find out what all the hype is about.</description>
+    </item>
+    
+    <item>
+      <title>When should you take your driving test?</title>
+      <link>/2018/02/when-should-you-take-your-driving-test/</link>
+      <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/when-should-you-take-your-driving-test/</guid>
+      <description>Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?</description>
+    </item>
+    
+    <item>
+      <title>Does Taylor Swift have a big reputation?</title>
+      <link>/2018/01/does-taylor-swift-have-a-big-reputation/</link>
+      <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/01/does-taylor-swift-have-a-big-reputation/</guid>
+      <description>Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.</description>
     </item>
     
   </channel>

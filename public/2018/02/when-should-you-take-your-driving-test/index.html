@@ -1,0 +1,831 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
+    <title>When should you take your driving test?</title>
+    <meta name="author" content="Jennifer Snape">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?">
+    <meta property="og:description" content="Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="When should you take your driving test?">
+    <meta property="og:url" content="/2018/02/when-should-you-take-your-driving-test/">
+    <meta property="og:site_name" content="Jennifer Snape | Data Science">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jennifer Snape | Data Science">
+    <meta name="twitter:description" content="Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?">
+    
+      <meta name="twitter:creator" content="@jennifersnape">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg">
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526667917/DrivingTest/Screen_Shot_2018-05-18_at_19.24.42.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113518615-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Jennifer Snape | Data Science</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Jennifer Snape</h4>
+        
+          <h5 class="sidebar-profile-bio">Interesting data science and mathematical projects!</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/jsnape22">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/JenniferSnape">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.instagram.com/snapejenny">
+    
+      <i class="sidebar-button-icon fa fa-instagram"></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/jennifer-snape-33115098/">
+    
+      <i class="sidebar-button-icon fa fa-linkedin-square"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      When should you take your driving test?
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-02-03T00:00:00Z">
+        
+  February 3, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/maths">Maths</a>, 
+    
+      <a class="category-link" href="/categories/r">R</a>, 
+    
+      <a class="category-link" href="/categories/optimisation">optimisation</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="mathematical-optimisation-in-r" class="section level3">
+<h3>Mathematical Optimisation in R</h3>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526667917/DrivingTest/Screen_Shot_2018-05-18_at_19.24.42.png" />
+</center>
+<p>Back before I moved to London and had to get rid of my car (<em>sob</em>), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money? I always figured there would be some mathematical optimisation technique to come up with an answer that takes the price of driving lessons, the price of a driving test and a function that estimates your likelihood of passing the driving test given the number of lessons you’d had. However this always seemed to hurt my head too much to work out especially given I was trying to concentrate on driving at the same time.  However since starting this blog I decided to explore this idea I’ve had for a few years and try to work it out.</p>
+</div>
+<div id="setting-up-the-problem" class="section level3">
+<h3>Setting up the problem</h3>
+<p>To begin the optimisation I need to calculate the total cost of passing a driving test, which I will then aim to minimise. Assuming one driving lesson a week at the cost of £42 (I think mine were roughly this price) and that each driving test taken costs £62, then the total cost can be calculated by:</p>
+<center>
+<strong>Total Cost = (42 xTotal weeks) + (62 x number of tests taken)</strong>
+</center>
+<p>I decided that in the first 3 weeks of learning to drive, my probability of passing my test was 0 since it took me that long to learn the basics (how to start, how to stop, how to go over a roundabout without panicking etc.) Therefore I put the first 3 weeks of lessons at a set cost of £42 x 3 = £126 and instead of measuring total weeks, I could measure the number of weeks after the first 3 (So weeks + 3 = Total Weeks).  Therefore my total cost that I want to try and minimise is:</p>
+<center>
+<strong>Total Cost = 126 + (42 x weeks) + (62 x number of tests taken )</strong> <strong>where Total Weeks = weeks + 3</strong>
+</center>
+<p>I am going to model the number of times taken to pass a driving test as a random variable with a geometric distribution. This is the distribution of how many tries it takes to get a success if the probably of success in each attempt is p. There is a number of assumptions with this type of distribution which might not necessary hold in real life (I will discuss this later) but for now, it’s a simple way to start.</p>
+<center>
+<strong>Number of tries to pass test = Geom(p)</strong>
+</center>
+<p>It is unlikely that p is a fixed value in this problem as the more driving lessons you have, the more likely you are to pass your test. Therefore I need p to depend to the number of weeks of lessons you have had. This means I need a distribution for p. As it is a probability, the distribution needs to go between 0 and 1 for all positive values (of weeks). I had a few tries to come up with something that might be suitable…</p>
+</div>
+<div id="try-1" class="section level3">
+<h3>TRY 1</h3>
+I started with a distribution of the form y = x/(x+c) where c is a chosen constant. This is because I knew I needed something that would start from 0 when number of weeks is 0 but would asymptotically go to 1 as weeks went to infinity. This distribution fit these requirements so I thought it might be an easy way to start. Here c would depend on how quickly your driving skills progress. I modelled this on my 17 year old self by thinking after how many weeks was I 50% likely to pass my test. After a little thought and some guess-work, I decided on 15 weeks. Remembering that for me weeks = total weeks - 3, that would make c = 12.(Plug in 12 weeks and you can see the probability is 0.5.)
+<center>
+<p><strong>P = weeks / (weeks + 12)</strong></p>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526666799/DrivingTest/Driving1.png" />
+</center>
+<p>So now I have a distribution of the number of tries to pass my test. However since this is random variable, its actual value on any given week still depends on chance. Therefore I decided to look at the expectation instead. This is the most likely value to come up - the expected value. For a geometric distribution this is calculated by 1/p. Substituting this all into my total cost formula I got:</p>
+<center>
+<strong>Total cost = 126 +(42 x weeks) + {62 x (weeks + 12)/weeks}</strong>
+</center>
+We can plot this on a graph and see roughly where the minimum point occurs. To be more specific you can use calculus to work out the exact value by differentiating and setting this to 0. The final value that comes out is roughly 4.2 weeks meaning the total number of weeks would be approximately 7. The probability of passing at this point is   only 3 tests in 10 and the total cost is £542.
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526666798/DrivingTest/Driving2.png" />
+</center>
+<p>Now this does not seem very likely to me. After 7 weeks of lessons I was probably still panicking about how to do roundabouts and I hadn’t even considered the idea of doing a parallel park. So whats going on? Lets take another look at my chosen distribution of p. The curve is very steep between 0 and 12 suggesting that in the first 12 weeks you progress extremely fast but after this the curve gets very gradual, even by 50 weeks your probability of passing is still only 4 in 5. Is this really how driving ability progresses? Perhaps it is more likely at the start your probability remains low, only increasing slightly until you get to a certain point and it clicks! After that you progress much faster. I decided to try to come with a new distribution for p again with this in mind.</p>
+</div>
+<div id="try-2" class="section level3">
+<h3>TRY 2</h3>
+<p>If I wanted a distribution that fit my idea of how driving skill processes I recognised I would probably need a piece-wise function: that is a model of driving skills until you reach that “clicking point” and then a model for after. To think about what would make sense, I thought back to my driving lessons again and considered how likely I was to pass after given amount of weeks. After very unscientifically thinking about my abilities and discussing in length with my boyfriend, I decided that a quadratic distribution might fit the first half of piece-wise function. This distribution starts gradual but then increases with time. I wanted something of the form y=cx^2. Again I used the half way point (15 lessons has probability 0.5) to come up with a value for c. In this case my formula was:</p>
+<center>
+<strong>p = weeks^2/288.</strong>
+</center>
+<p>After this point I would need a formula to go asymptotically go towards 1. For ease, I chose to have the second formula to be of the same form as what I used in my first try. Putting these  two formulas together required a little bit of a tinkering to get both of the functions to join at the “clicking point”.  (I chose this point to be at the half way point at p=0.5. ) The R code below shows my final cost model which calculates the probability of passing a driving test using the function New_prob.</p>
+<pre><code>new_prob &lt;- function(x){
+  if(x&lt;=12){
+    prob &lt;-(1/288)*x^2
+  }
+  else if (x&gt;12){
+    prob &lt;- ((x-12)/(2*(x-12)+4))+0.5
+  }
+  return(prob)
+}
+
+f2 &lt;- function (x) (126+(42*x)+62*(1/new_prob(x)))
+optimise(f2, c(0,100))</code></pre>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526666812/DrivingTest/Driving3.png" />
+</center>
+<p>To optimise my piece-wise function I opted for the easy method - using a function in R. The function I used was called optimise from the stats package. When I plugged in the function for total cost, out popped an answer of 9.5. Therefore that would make the minimum of total weeks between 12 and 13. This seemed more realistic to me than my first attempt.  Although according to my function at this time, you would still only be likely to pass 1 in 3 driving test that you take.</p>
+The total cost is estimated to be approximately £723! I think I actually took around 20 weeks to pass my test (although I did pass first time!) which means according to my model I over paid for my licence by around £180! Ouch! Lucky for me my parents paid though ;).
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526666823/DrivingTest/Driving4.png" />
+</center>
+</div>
+<div id="conclusions" class="section level3">
+<h3>Conclusions</h3>
+<p>There are some flaws in my model of course, aside from the very unscientific way I modelled improvement in driving skill. The assumptions of the geometric distribution are that each try is identical and independent of each other. This does not allow for any improvement in driving ability the more tests you do (and fail). You might expect that after doing 1 test you would have a better idea of what to expect and would be more likely to pass next time. Therefore the model likely over estimates the cost of passing a driving test. In reality the minimum cost is probably a bit lower…</p>
+<p>However I think my main takeaway message from this research is still valid: it makes sense to take your test a little bit before you are certain to pass, perhaps even when you are only likely to pass 1 driving test in 3 - gamble on your ability - it is likely to pay off!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/old-content/">Old Content</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/who-has-won-the-most-brit-awards/" data-tooltip="Who has won the most Brit Awards?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/does-taylor-swift-have-a-big-reputation/" data-tooltip="Does Taylor Swift have a big reputation?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/02/when-should-you-take-your-driving-test/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/02/when-should-you-take-your-driving-test/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/02/when-should-you-take-your-driving-test/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Jennifer Snape. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/who-has-won-the-most-brit-awards/" data-tooltip="Who has won the most Brit Awards?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/01/does-taylor-swift-have-a-big-reputation/" data-tooltip="Does Taylor Swift have a big reputation?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/02/when-should-you-take-your-driving-test/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/02/when-should-you-take-your-driving-test/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/02/when-should-you-take-your-driving-test/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F02%2Fwhen-should-you-take-your-driving-test%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F02%2Fwhen-should-you-take-your-driving-test%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F02%2Fwhen-should-you-take-your-driving-test%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Jennifer Snape</h4>
+    
+      <div id="about-card-bio">Interesting data science and mathematical projects!</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        statistician
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        London, Uk
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/new-blogdown-website-launch/">
+                <h3 class="media-heading">New Blogdown Website Launch!</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Welcome to my brand new and shiny ‘Blogdown’ website! I have wanted to transfer from my wordpress.com blog for a while now and last weekend I finally did some investigating into my alternative options. I considered using a self hosted wordpress.org site which would allow me more control over my site but would fundamentally still use the same wordpress framework. Generally this seems to be what most regular bloggers use.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/getting-started-with-r-shiny/">
+                <h3 class="media-heading">Getting Started with R Shiny</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Interactive Visualisations in R  This post was inspired by this competition, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/my-top-10-films-about-maths/">
+                <h3 class="media-heading">My top 10 Films about Maths</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Although not quite a mainstream genre, there are plenty of films about mathematicians or featuring applications of maths. I find these films oddly comforting and I’ve watched many of the films on this list over and over again. I love discovering new mathematical films so I thought I’d put together a list of my favourites to help give someone else some inspiration for their next movie night in. Here is a countdown of my personal top 10 (plus honourable mentions).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/code-first-girls-python-course-review/">
+                <h3 class="media-heading">Code First Girls: Python course review</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/how-many-munros-have-i-climbed/">
+                <h3 class="media-heading">How many Munros have I climbed?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/does-everybody-love-black-panther/">
+                <h3 class="media-heading">Does everybody love Black Panther?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Web Scraping Reviews of Marvel’s Black Panther from Rotten Tomatoes using R   Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/who-has-won-the-most-brit-awards/">
+                <h3 class="media-heading">Who has won the most Brit Awards?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Visualising the Brit Awards using ggplot2   When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called ‘ggplot2’ that everyone seemed to be using. I decided I needed to do my research and find out what all the hype is about.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/when-should-you-take-your-driving-test/">
+                <h3 class="media-heading">When should you take your driving test?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/01/does-taylor-swift-have-a-big-reputation/">
+                <h3 class="media-heading">Does Taylor Swift have a big reputation?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         9 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://res.cloudinary.com/jsnape22/image/upload/v1526331556/23bg_18.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/02\/when-should-you-take-your-driving-test\/';
+          
+            this.page.identifier = '\/2018\/02\/when-should-you-take-your-driving-test\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

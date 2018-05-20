@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maths on Jennifer Snape | Data Science</title>
+    <link>/categories/maths/</link>
+    <description>Recent content in Maths on Jennifer Snape | Data Science</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/maths/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>When should you take your driving test?</title>
+      <link>/2018/02/when-should-you-take-your-driving-test/</link>
+      <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/when-should-you-take-your-driving-test/</guid>
+      <description>Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?</description>
+    </item>
+    
+  </channel>
+</rss>

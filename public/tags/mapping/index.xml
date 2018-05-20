@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mapping on Jennifer Snape | Data Science</title>
+    <link>/tags/mapping/</link>
+    <description>Recent content in Mapping on Jennifer Snape | Data Science</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mapping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting Started with R Shiny</title>
+      <link>/2018/04/getting-started-with-r-shiny/</link>
+      <pubDate>Sat, 28 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/04/getting-started-with-r-shiny/</guid>
+      <description>Interactive Visualisations in R  This post was inspired by this competition, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</description>
+    </item>
+    
+    <item>
+      <title>How many Munros have I climbed?</title>
+      <link>/2018/03/how-many-munros-have-i-climbed/</link>
+      <pubDate>Sun, 18 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/03/how-many-munros-have-i-climbed/</guid>
+      <description>Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.</description>
+    </item>
+    
+  </channel>
+</rss>

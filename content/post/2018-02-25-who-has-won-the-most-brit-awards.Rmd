@@ -1,0 +1,132 @@
+---
+title: Who has won the most Brit Awards?
+author: Jenny
+date: '2018-02-25'
+slug: who-has-won-the-most-brit-awards
+categories:
+  - R
+  - Visualisation
+tags: []
+thumbnailImagePosition: "left"
+thumbnailImage: "http://res.cloudinary.com/jsnape22/image/upload/v1526674998/BritAwards/2018_Brits.png"
+summary: When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called 'ggplot2' that everyone seemed to be using.I decided I needed to do my research and find out what all the hype is about. In this post I will be demonstrating some simple 'ggplot2' visualisations using data about the Brit Awards. The 2018 award show only just took place a few days ago, so as well as being topical, I thought the data would make for some pretty fun graphs.
+---
+
+##Visualising the Brit Awards using ggplot2
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674998/BritAwards/2018_Brits.png)
+</center>
+When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called 'ggplot2' that everyone seemed to be using.  I decided I needed to do my research and find out what all the hype is about.  In this post I will be demonstrating some simple 'ggplot2' visualisations using data about the Brit Awards.  The 2018 award show only just took place a few days ago, so as well as being topical, I thought the data would make for some pretty fun graphs.
+
+###R Plotting packages & the Basics of ggplot2.
+
+Once I started researching the best plotting packages, I realised this is  a hot topic for debate in the data science community. While it seems that ggplot2 is preferred for most styles of graph due to its logical grammar and more attractive plots, there are some things that are better to do in the base R plotting function. However for beginners and those of us who are wanting to do standard straight forward graphs (the kind you may might do on excel) ggplot2 is the way to go. I found this post most insightful for explaining the different views.
+
+To understand the basis I watched a youtube webinar that gives a pretty thorough introduction (it's a bit long though, make sure you have a tea ready). In summary 'ggplot2' works on the idea that you can build any graph from the same set of components: a data set, a set of geoms (visual markers the represent data points) and a coordinate system. It takes a little bit of getting used to - it some me some time before I was able to make a graph without using example code to guide me! I found this handy cheat sheet from RStudio helpful in understanding some of the basic features.
+
+###The data
+
+The data I used was taken from the following wikipedia page about the brit awards. I then added some of my own variables regarding the type of music and gender of each winner. I edited my data in the MacBook program 'numbers' and then read it into R as a csv. Now onto the Graphs... !
+
+###Who has won the most Brits?
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674521/BritAwards/Image_25-02-2018_at_10.53.jpg)
+</center>
+```
+ h= ggplot(Top, aes(x=`British acts`, y=Awards)) +
+  geom_bar(stat ="identity", fill="blue") + theme_bw() +
+   labs(y="Number of Awards", title="Number of Brit Awards won by the top British Artists")
+h + scale_x_discrete(limits = Names)+
+  theme(axis.text = element_text(size=9), axis.title = element_text(size=18), 
+  plot.title = element_text(size=20))
+```
+Its the title of my post, so I thought I better start by finding out who has won the most Brit awards. I made a simple bar-plot of the top 10 winners. You can see that Robbie Williams has won the most with 16 awards (!). Although this counts awards with take that and as a solo artist.
+
+
+###Who has been watching the Brits?
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674522/BritAwards/Image_25-02-2018_at_11.06.jpg)
+</center>
+```
+g1 =ggplot(Views, aes(x=Year, y=Viewers)) +
+  geom_line(color="blue")+theme_bw() +labs(y="Number of Viewers (millions)", title="Number of Viewers", subtitle="Brit Awards 1999-2017")
+g1+ theme(axis.text = element_text(size=9), axis.title = element_text(size=18), plot.title = element_text(size=20))+
+  scale_x_continuous(breaks =c(1999,2002,2006,2010,2014,2018))
+
+```
+
+To demonstrate a line graph in ggplot2 I plotted the Brit Award viewing figures each year since 1999. Figures now are around half of what they were in 1999.
+
+
+
+###How many men/women have won Album of the Year?
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674536/BritAwards/Image_25-02-2018_at_11.16.jpg)
+</center>
+```
+pie = ggplot(Brits, aes(x=factor(1), fill=Album_Sex2)) +
+  geom_bar(width=1) + labs( x="", y= "",subtitle="1985 - 2017", title="Winner of Brit Award Album of the Year by Gender")
+pie +theme_minimal()+scale_fill_discrete(name = "Gender")+ 
+  coord_polar("y") +
+  theme(plot.title=element_text(size=20), axis.ticks = element_blank(), 
+  axis.text = element_blank(), panel.grid = element_blank())+
+  annotate("text", x = 1.3, y = 12.8, label = "67.6%", size=4)+
+  annotate("text", x = 1.3, y = 25.8, label = "23.5%", size=4)+
+  annotate("text", x = 1.35, y = 32.5, label = "8.9%", size=4)
+
+```
+
+As a statistician, I am generally discouraged from using pie charts to visualise data. However I was still interested in how to make them in this package and it can be nice to mix things up and use them every so often! For this data I'm looking just at winners of British Album of the Year. I have broken the winners down by Male, Female and Both -(to mean when a band made up of men & women wins or a collaboration between a man and a woman wins). Since 1985 the majority of winners (68%) have been  male.
+
+
+
+###What type of Music has won the most Album of the Year awards?
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674523/BritAwards/Image_25-02-2018_at_11.10.jpg)
+</center>
+```
+g=ggplot(Brits, aes(x=Album_Type, fill=Album_Sex2)) +
+  geom_bar() +theme_bw()+
+  labs(fill="yes",x="Music Style", y="Number of Winners", title="Music Style of Brit Award Winners", subtitle="By Gender of Artist")
+g+scale_fill_discrete(name="Gender of Artist")+
+scale_color_manual(labels=c("yes", "no"))+
+  scale_fill_manual(values = c("mediumseagreen", "deeppink", "blue", "pink"))+
+  theme(axis.text = element_text(size=9), axis.title = element_text(size=18), 
+  plot.title = element_text(size=20))
+```
+
+It's easy to make stacked bar charts or bar charts broken down by characteristic in ggplot2. To demonstrate this I have looked at the type of music that won Album of the year and stacked it by gender of the artist. While the winners who were from bands were mainly male, Solo artists were more evenly split between men and women. Another way to do it is to use something called 'facet_wrap' which plots separate graphs for each characteristic. Again this shows male winners are more likely to be in a band and female winners are more likely to be solo artists.
+
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674688/BritAwards/Screen_Shot_2018-05-18_at_21.17.45.png)
+</center>
+```
+h3= ggplot(Brits, aes(Album_Type))+geom_bar(fill="blue")+facet_wrap(~Album_Sex2) +
+  theme_bw() + 
+  labs(y="Number of Winners", x="Album Type", subtitle="1985 - 2017", 
+  title="Music style of Brit Award Winners by Gender")
+h3+ theme(axis.text = element_text(size=9), axis.title = element_text(size=18), plot.title = element_text(size=20))
+```
+
+
+###How have music tastes changed over time?
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526674538/BritAwards/Image_25-02-2018_at_11.15.jpg)
+</center>
+```
+m =ggplot(Brits, aes(x=Year_short, fill=Album_Type))+geom_histogram(binwidth = 1)+
+  theme(axis.text.y = element_blank(), 
+  axis.ticks.y = element_blank(), axis.title.y = element_blank())+
+  labs( x= "Year", title="British Album of the Year by music type", subtitle="1985-2018")
+m + coord_fixed(ratio = 8) + scale_fill_discrete(name="Album Type") +
+  theme(axis.text = element_text(size=9), 
+  axis.title = element_text(size=18), 
+  plot.title = element_text(size=20))+
+  scale_x_continuous(breaks =c(1985,1990,1995,2000,2005,2010, 2015, 2018))
+```
+
+Finally I wanted to see if the brit award winners could give any insight into how music tastes have changed over time. I looked at the type of music that won album of year and plotted a chart over time that changes colour for the different types of music. I'm not sure what the name of this type of graph is (a colour chart?) but I like how it demonstrates how a categorical variable changes over time using colours. I think it reflects reasonably accurately how British music has changed over time, highlighting the periods of time were rock bands were the most popular and periods of times when solo artists / pop music has been more popular.
+
+###Conclusions
+
+It took me a while to get the hang of ggplot2 - especially when working out how to customise the graphs to make them look the way I want. However after a while, I did appreciate why it is the preferred way to plotting for most people. All graphs have a similar structure so it makes it very quick to replicate graphs from the same data set and change between different types of graphs. It is super quick to make stacked bar charts or to break down charts by certain characteristics (These are things I wouldn't know how to do using standard plotting tools). Legends are also much easier to create and format. If you just want to quickly have a look at the data it can seem a pain to use ggplot2 and it may be quicker to use a basic plot function. But if you are creating graphs for a report, ggplot2 will create a much nicer and more profession result.

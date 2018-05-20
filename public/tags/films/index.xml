@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Films on Jennifer Snape | Data Science</title>
+    <link>/tags/films/</link>
+    <description>Recent content in Films on Jennifer Snape | Data Science</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/films/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My top 10 Films about Maths</title>
+      <link>/2018/04/my-top-10-films-about-maths/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/04/my-top-10-films-about-maths/</guid>
+      <description>Although not quite a mainstream genre, there are plenty of films about mathematicians or featuring applications of maths. I find these films oddly comforting and I’ve watched many of the films on this list over and over again. I love discovering new mathematical films so I thought I’d put together a list of my favourites to help give someone else some inspiration for their next movie night in. Here is a countdown of my personal top 10 (plus honourable mentions).</description>
+    </item>
+    
+  </channel>
+</rss>

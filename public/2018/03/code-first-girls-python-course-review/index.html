@@ -1,0 +1,799 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Code First Girls: Python course review</title>
+    <meta name="author" content="Jennifer Snape">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.">
+    <meta property="og:description" content="For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Code First Girls: Python course review">
+    <meta property="og:url" content="/2018/03/code-first-girls-python-course-review/">
+    <meta property="og:site_name" content="Jennifer Snape | Data Science">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jennifer Snape | Data Science">
+    <meta name="twitter:description" content="For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.">
+    
+      <meta name="twitter:creator" content="@jennifersnape">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg">
+    
+
+    
+      <meta property="og:image" content="https://res.cloudinary.com/jsnape22/image/upload/v1526728550/CodeFirstGirls/819501293-cfg.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113518615-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Jennifer Snape | Data Science</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Jennifer Snape</h4>
+        
+          <h5 class="sidebar-profile-bio">Interesting data science and mathematical projects!</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/jsnape22">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/JenniferSnape">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.instagram.com/snapejenny">
+    
+      <i class="sidebar-button-icon fa fa-instagram"></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/jennifer-snape-33115098/">
+    
+      <i class="sidebar-button-icon fa fa-linkedin-square"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Code First Girls: Python course review
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-03-30T00:00:00Z">
+        
+  March 30, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/python">Python</a>, 
+    
+      <a class="category-link" href="/categories/web-development">Web development</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <center>
+<img src="https://res.cloudinary.com/jsnape22/image/upload/v1526728550/CodeFirstGirls/819501293-cfg.png" />
+</center>
+<p>For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.</p>
+<p>There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby. I picked the IG London python course. This was for a few reasons - firstly I had done some front-end programming before so thought the beginners course might not teach me that much new. Also I have been intending on learning Python for a while now - I’ve had Spyder downloaded on my computer since Christmas with the intention of learning how to do statistical analysis in Python the same way as in R, however I’ve never quite got round to it. Therefore this seemed like a great opportunity to learn the basics of Python and get started. The advantage of doing a class (instead of trying to teach yourself online) is that you have a set time every week to focus on learning with professional teachers to help you when you get stuck and cover the details you might miss on your own. I often get distracted trying to learn things at home and overwhelmed by the amount of different courses and learning resources available. Finally I chose the IG course because it was the nearest to my work and I could walk there easily after work - very convenient for me !</p>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526728264/CodeFirstGirls/python-logo-master-v3-TM.png" />
+</center>
+<div id="overview-of-the-course" class="section level3">
+<h3>Overview of the Course</h3>
+The course is run in 8 sessions that cover: the basics of Python programming, the BASH command line, git and git hub, the Flask framework, using APIs, deploying websites onto heroku and finally, putting it all together in a group project! The sessions were generally taught as lectures with tasks / things to follow along with on our own computers. If we got stuck (this happened a lot) there were other instructors in the class to help get us back on track. We were also set optional homework as well to help us practice what we had learned.  In the last 2 weeks of the course we got into small groups (of 2 or 3) and worked on a group project. This was probably the best part of the whole course as it gave us a chance to really put into practice everything we had learnt and working in teams was actually really fun. At the end we all presented what we had done and the instructors picked a winner, while we celebrated finishing the course with pizza and wine.
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526728265/CodeFirstGirls/FlaskLogo.png" />
+</center>
+</div>
+<div id="my-group-project" class="section level3">
+<h3>My Group Project</h3>
+<p>We had many ideas for our project - however most of them were far too complex or difficult for us to achieve in a week in our spare time. In the end, we decided to use the twitter API to extract tweets based on their hashtag. We then plotted the location of these tweets on a map using the google maps API. My group split the project into three parts and assigned everyone a role.</p>
+<ol style="list-style-type: decimal">
+<li><p>Extracting the tweets &amp; locations from the twitter API</p></li>
+<li><p>Plotting the locations on google maps</p></li>
+<li><p>Building the front end website and accepting user inputs</p></li>
+</ol>
+<p>Our final project was made up of 1 python flask file, 3 HTML files (for the home page, map page and the about page), 1 css file and 1 javascript file that used the google maps API to plot the map and tweet location. (Let me know if you would be interesting in finding out more detail about our code &amp; the different files and I can do another post about how we did it.)</p>
+<p>Some of the issues we had were finding tweets that had a location listed as the majority of tweets do not. We had to extract loads of tweets and then cycle through them all to extract just the ones with a location. Also after getting the locations we had to reformat the data to get it into the right JSON format to go into the javascript map file. None of our team were very skilled at website design and we struggled to come up with an “attractive design”. If we had more time we definitely would have worked on this!</p>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526728281/CodeFirstGirls/Screen_Shot_2018-03-30_at_10.40.51.png" />
+</center>
+<blockquote>
+<p>Our Group Project - Find it at <a href="https://gentle-wave-67373.herokuapp.com/map" class="uri">https://gentle-wave-67373.herokuapp.com/map</a></p>
+</blockquote>
+<p>My group actually won the group project! Although everyone had done cool websites / programmes, we were picked as we have successfully linked both the front and back ends of the website and had worked as a team using GitHub successfully!.</p>
+</div>
+<div id="what-i-learnt-and-recommendations" class="section level3">
+<h3>What I Learnt and Recommendations </h3>
+<p>The course starts quite slow, I already knew some of the basic python we were taught at the start (variables, functions, for loops etc.). But after the first 2 sessions, everything I learnt was new! My biggest takeaways from this course are how to use the Flask framework in python and a general understanding of how applications are built. I also learnt about using the Bash command line and GitHub which I had never come across before. Learning to use the command line blew my mind, I can’t believe I never knew about that before! I loved meeting so many other women who are passionate about tech and have been inspired to learn more and seek out other opportunities like this one.</p>
+<p>The free course are only open to  students or those who graduates in the last 2 years - I graduated just under 2 years ago so I’m not sure if I will qualify for another course (I’d been keen to do the Ruby one) which is a shame. I wish I had known about these courses earlier! Its amazing that this course was free, and I am extremely thankful to codefirstgirls and the sponsors for offering these opportunities. If you are interested in doing a similar course more information is on their website including how to apply!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/courses/">Courses</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/review/">Review</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/my-top-10-films-about-maths/" data-tooltip="My top 10 Films about Maths">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/how-many-munros-have-i-climbed/" data-tooltip="How many Munros have I climbed?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/03/code-first-girls-python-course-review/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/03/code-first-girls-python-course-review/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/03/code-first-girls-python-course-review/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Jennifer Snape. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/my-top-10-films-about-maths/" data-tooltip="My top 10 Films about Maths">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/how-many-munros-have-i-climbed/" data-tooltip="How many Munros have I climbed?">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/03/code-first-girls-python-course-review/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/03/code-first-girls-python-course-review/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/03/code-first-girls-python-course-review/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F03%2Fcode-first-girls-python-course-review%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F03%2Fcode-first-girls-python-course-review%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F03%2Fcode-first-girls-python-course-review%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Jennifer Snape</h4>
+    
+      <div id="about-card-bio">Interesting data science and mathematical projects!</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        statistician
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        London, Uk
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/new-blogdown-website-launch/">
+                <h3 class="media-heading">New Blogdown Website Launch!</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Welcome to my brand new and shiny ‘Blogdown’ website! I have wanted to transfer from my wordpress.com blog for a while now and last weekend I finally did some investigating into my alternative options. I considered using a self hosted wordpress.org site which would allow me more control over my site but would fundamentally still use the same wordpress framework. Generally this seems to be what most regular bloggers use.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/getting-started-with-r-shiny/">
+                <h3 class="media-heading">Getting Started with R Shiny</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Interactive Visualisations in R  This post was inspired by this competition, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/my-top-10-films-about-maths/">
+                <h3 class="media-heading">My top 10 Films about Maths</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Although not quite a mainstream genre, there are plenty of films about mathematicians or featuring applications of maths. I find these films oddly comforting and I’ve watched many of the films on this list over and over again. I love discovering new mathematical films so I thought I’d put together a list of my favourites to help give someone else some inspiration for their next movie night in. Here is a countdown of my personal top 10 (plus honourable mentions).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/code-first-girls-python-course-review/">
+                <h3 class="media-heading">Code First Girls: Python course review</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/how-many-munros-have-i-climbed/">
+                <h3 class="media-heading">How many Munros have I climbed?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/does-everybody-love-black-panther/">
+                <h3 class="media-heading">Does everybody love Black Panther?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Web Scraping Reviews of Marvel’s Black Panther from Rotten Tomatoes using R   Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/who-has-won-the-most-brit-awards/">
+                <h3 class="media-heading">Who has won the most Brit Awards?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Visualising the Brit Awards using ggplot2   When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called ‘ggplot2’ that everyone seemed to be using. I decided I needed to do my research and find out what all the hype is about.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/when-should-you-take-your-driving-test/">
+                <h3 class="media-heading">When should you take your driving test?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/01/does-taylor-swift-have-a-big-reputation/">
+                <h3 class="media-heading">Does Taylor Swift have a big reputation?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         9 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://res.cloudinary.com/jsnape22/image/upload/v1526331556/23bg_18.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/03\/code-first-girls-python-course-review\/';
+          
+            this.page.identifier = '\/2018\/03\/code-first-girls-python-course-review\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

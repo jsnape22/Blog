@@ -1,0 +1,62 @@
+---
+title: How many Munros have I climbed?
+author: Jenny
+date: '2018-03-18'
+slug: how-many-munros-have-i-climbed
+categories:
+  - Visualisation
+  - R
+tags:
+  - Mapping
+thumbnailImagePosition: "left"
+thumbnailImage: "http://res.cloudinary.com/jsnape22/image/upload/v1526726363/Munros/10962619055_3dce1b7715_z.jpg"
+summary: After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.
+---
+
+##Mapping the Munros in R using ggmap
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526726363/Munros/10962619055_3dce1b7715_z.jpg)
+</center>
+
+After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps.  You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.  I followed the guide in the following blog post to get started.
+
+GGmap has a function called "get_map" that allows you to access a map of your choice from google maps (or from other types of maps such as OpenStreeMap). You can pick your location through text (e.g "London") or you can input specific longitude and latitude points. You also chose the zoom which determines what scale you want to your map to be and the type of map (Satellite, Roadmap etc.).  After this you can use ggplot2 functions to, for example' add data points to the map to get a visual look at the locations of your data.
+
+###The Data
+
+My chosen data set comes from this database of Scottish Munros. Munros are mountains in Scotland that are over 3000 feet. They are named after Sir Hugh Munro who first produced the list of these mountains in 1891. Climbing all of them is no easy task though as there are 282 of these mountains and some of them are in extremely remote locations or require specialist climbing equipment to reach the top. They are also scattered out across Scotland  in a number of different mountain ranges. In this project I am going to plot the location of these 282 mountains across Scotland. Also, because I actually have climbed a few of these mountains (Ok only 6 out of 282) I will visualise the mountains that I have and haven't climbed.
+
+###Data Wrangling & Plotting
+
+My dataset came with grid reference coordinates instead of latitude and longitude coordinates. As the mapping package I am using requires latitude and longitude values, the first step was to convert my grid references which I did through this website.  Next I needed to get my base map using the "get_map" function. Through some trial and error I decided to centre my map of Aviemore with a zoom of 7.  This can be plotted using ggmap.
+
+To add data on top of the map you add  a geom_point function using your chosen dataset. For me this was my Munro table with latitude and longitude values. I also added a variable to indicate whether I had climbed the mountain or not called "climb". When plotted, I could allow the colour of the points to vary depend on this variable. I also changed the size of the points to make it easier to identify the mountains I had and hadn't climbed.
+
+```
+Scotland_map <- get_map("aviemore", zoom =7)
+g =ggmap(Scotland_map) +
+  geom_point(data=Munro3, aes(x=lon, y=lat, size=factor(climb), 
+  color=factor(climb)),
+              alpha = 0.8, shape=20)
+g+ scale_color_manual(values = c( "darkblue", "magenta"), 
+labels=c("No", "Yes"))+ 
+  scale_size_manual(values = c(1, 3), guide="none")+
+  theme(axis.title.y = element_blank(), 
+        axis.title.x = element_blank())+
+  ggtitle("Map of the Scottish Munros") +labs(color="Climbed?")
+
+```
+
+###Final Map
+
+This is my final plot of the Scottish Munros including the few I have climbed!
+<center>
+![](http://res.cloudinary.com/jsnape22/image/upload/v1526726332/Munros/Munro2.png)
+</center>
+
+
+###Conclusion
+
+There a clearly a lot of high mountains in Scotland, of which I have climbed very few... I'm not going to make it into the Munro "bagging" club any time soon.
+
+As for the plotting - the most difficult part was, as it often is, the data wrangling. It took some time to make sure all my mountains had the correct longitude and latitude points as some got coded to the wrong values or were not recognised by the conversion programme. I found a package called "googleway' that uses the google maps api to get the longitude and latitudes of points from just the address to fill in the gaps! I also had difficulties making sure all my map fit on the screen without being too far zoomed out to be able to see the individual points. However overall I was impressed with ggmap and how easy it was to plot my points.

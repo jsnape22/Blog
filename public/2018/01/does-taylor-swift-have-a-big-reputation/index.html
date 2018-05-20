@@ -1,0 +1,822 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Does Taylor Swift have a big reputation?</title>
+    <meta name="author" content="Jennifer Snape">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.">
+    <meta property="og:description" content="Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Does Taylor Swift have a big reputation?">
+    <meta property="og:url" content="/2018/01/does-taylor-swift-have-a-big-reputation/">
+    <meta property="og:site_name" content="Jennifer Snape | Data Science">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jennifer Snape | Data Science">
+    <meta name="twitter:description" content="Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.">
+    
+      <meta name="twitter:creator" content="@jennifersnape">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg">
+    
+
+    
+      <meta property="og:image" content="http://res.cloudinary.com/jsnape22/image/upload/v1526666059/TaylorSwift/Screen_Shot_2018-01-02_at_17.28.20.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113518615-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Jennifer Snape | Data Science</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Jennifer Snape</h4>
+        
+          <h5 class="sidebar-profile-bio">Interesting data science and mathematical projects!</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/jsnape22">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/JenniferSnape">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.instagram.com/snapejenny">
+    
+      <i class="sidebar-button-icon fa fa-instagram"></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/jennifer-snape-33115098/">
+    
+      <i class="sidebar-button-icon fa fa-linkedin-square"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Does Taylor Swift have a big reputation?
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-01-20T00:00:00Z">
+        
+  January 20, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/r">R</a>, 
+    
+      <a class="category-link" href="/categories/webscraping">Webscraping</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="twitter-scraping-using-r" class="section level2">
+<h2>Twitter Scraping Using R <br></h2>
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526666059/TaylorSwift/Screen_Shot_2018-01-02_at_17.28.20.png" />
+</center>
+<blockquote>
+<p>“Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”</p>
+</blockquote>
+<p>Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships. Whether you like the album or not (personally I love it), this post is not really about Taylor swift. This is about my first experience delving into the world of twitter scraping.</p>
+<p>Twitter was created in 2006 and since then has rapidly grown into a world wide social network with around 330 million active users in 2017. Twitter along with other social media giants such as Facebook, youtube, linkedIn, Instragram etc., have revolutionised the way we share news and interact with both friends and celebrities. Every day we leave behind a trail of our virtual movements including comments, likes, networks of friends and even just pages we view. With so much data being produced every day, companies are eager to collect this data and use it to provide customer insight and improve products and services. For example, a company can search for tweets mentioning their name to see how they are being perceived by the public or they can analyse their followers to look for patterns and expand their presence online.  Accessing data in this way is often called social media mining.</p>
+<p>However social media mining is not just for big corporations or academics. With open software such as R or python, we can all access social media data and use it in our own projects.  Each social media has a slightly different way of accessing data so for this case study I am focusing on one of the most straight forward ways using twitter.  Twitter is a great place to start as unlike other platforms, almost all user’s tweets are public and accessible. You can pick any topic to scrap data on, and as an example I decided to focus on a celebrity with a huge twitter presence - Taylor Swift. Since her whole album focusses on her supposedly bad reputation, I wondered whether there was evidence to back this up and twitter provides an ocean of data to work with.</p>
+<p>In order to extract data from twitter, you can use their API. This stands for application program interface and in simple terms it is a software intermediary that allows two applications to talk to each other. In our case, the API allows us to access twitter data and bring it directly into our program in the format we want. There are packages available in both R (‘twitteR’) and python (‘tweepy’) that make accessing the API and analysing specific tweets straightforward. Before you start you need to sign up for your own twitter access keys from the apps.twitter webpage. This is free but you need your own twitter account and a little bit of time to go through the steps. Extracting tweets can then be done in a few lines of code. All you need is a key word (or more than 1 if you like), the number of tweets you want to pull and the type of tweets (most recent or most popular for example).</p>
+<pre><code>consumer_key &lt;- &#39;xxxx&#39;
+consumer_secret &lt;- &#39;xxxxxx&#39;
+access_token &lt;- &#39;xxxxx&#39;
+access_secret &lt;- &#39;xxxxx&#39;
+
+setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
+TS &lt;-searchTwitter(&quot;@taylorswift13&quot;, n=10, lang=&quot;en&quot;, resultType = &quot;mixed&quot;)
+TS_text &lt;- sapply(TS, function(x) x$getText())</code></pre>
+<p>After extracting tweets, the next step is to perform some simple text cleaning. In R this can be done using the ‘tm’ package. Example steps might include removing numbers, punctuation, emoticons and blank space; changing all letters to lowercase and removing non-interesting words for example the key words you searched with and small words such as ‘and’ or ‘of’ known as stopwords.</p>
+<pre><code>TS_corpus &lt;- Corpus(VectorSource(TS_clean2))
+inspect(TS_corpus[1])
+TS_clean &lt;- tm_map(TS_corpus, function(x) iconv(x, to=&#39;UTF-8-MAC&#39;, sub=&#39;byte&#39;))
+TS_clean &lt;- tm_map(TS_clean, removePunctuation)
+TS_clean &lt;- tm_map(TS_clean, content_transformer(tolower))
+TS_clean &lt;- tm_map(TS_clean, removeWords, stopwords(&quot;english&quot;))
+TS_clean &lt;- tm_map(TS_clean, removeNumbers)
+TS_clean &lt;- tm_map(TS_clean, stripWhitespace)
+TS_clean &lt;- tm_map(TS_clean, removeWords, c(&quot;taylor swift&quot;))
+TS_clean &lt;- tm_map(TS_clean, removeWords, c(&quot;taylorswift&quot;))
+TS_clean &lt;- tm_map(TS_clean, removeWords, c(&quot;@taylorswift13&quot;))
+TS_clean &lt;- tm_map(TS_clean, removeWords, c(&quot;taylor&quot;))
+TS_clean &lt;- tm_map(TS_clean, removeWords, c(&quot;swifts&quot;))
+TS_clean &lt;- tm_map(TS_clean, removeWords, c(&quot;taylorswifts&quot;))</code></pre>
+From this point it’s up to you what you want to do with all your, now cleaned, twitter data. For my project, I started by having a look at the most common words using a wordcloud. This creates an attractive looking visualisation of the most common words. The wordcloud created from 10,000 tweets about Taylor swift is shown below. Most common words include the name of her new album ‘Reputation’, words relating to her music and sales: ‘sales’, ‘billboard’, ‘chartdata’ and other miscellaneous words ‘week’ ,’total’ ‘pure’. This gives some insight into what sorts of things people have been saying about Taylor but it does not reveal that much about her reputation.
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526665413/TaylorSwift/Screen_Shot_2018-01-02_at_18.04.32.png" />
+</center>
+<p>Therefore to answer my original question of whether Taylor Swift really has a big reputation I need to do some more complex analysis. What precisely are people saying about Taylor? Are the comments nasty or nice? Do they talk about her love life and celebrity feuds as much as her music would have us believe? With just a few tweets, you could easily go through each individually and categorise them, deciding whether the author was slating her or raving about her. However with a list of thousands of tweets this becomes more difficult.</p>
+One solution for this is to use text sentiment analysis. The idea is that you split a sentence into words and look to see how many positive and negative words are in the sentence. A positive word is given + 1 and a negative word is given -1. The sum of all the words gives an overall score which indicates whether the tweet is overall positive or negative. You can then score all the tweets and calculate summary statistics e.g. mean, median, standard deviation. For my Taylor Swift tweets the mean score was 0.26 with a standard deviation of 0.68. The distribution of scores is shown in the bar-plot below.
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526665689/TaylorSwift/Screen_Shot_2018-05-18_at_18.47.16.png" />
+</center>
+So what does this tell us? Well in general the tweets are positive. More people are saying nice things about her than negative - things aren’t as bad as you think Taylor! Of course that is just the average and we can see from the graph there are still negative tweets out there. In addition reputation tends to be relative. Perhaps if everyone else has a much higher mean score and less negative tweets then we might understand why Taylor feels hard done by. I re-ran the same analysis looking at some other celebrities. The table below shows the summary statistics for the following celebs: Best pal Selena Gomez, ex boyfriend Calvin Harris, rivals Katy Perry and Kim Kardashian, queen of pop Beyonce and finally US president with a definite big reputation, Donald Trump.
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526665689/TaylorSwift/Screen_Shot_2018-05-18_at_18.47.30.png" />
+</center>
+<p>In comparison to these celebrities Taylor Swift has the third highest mean score so comparatively her tweets are more positive than most! Looking at the standard deviation, Taylor has the fourth highest. This represents how much variation there is between the scores of the tweets and therefore those with a higher standard deviation are likely to divide opinion more. Perhaps then, those celebrities with a larger standard deviation have the bigger reputation. (This is an overly simplified way to decide on a celebrities reputation of course.) Using this method, we can infer that Donald Trump and Katy Perry actually have the biggest reputation, although Taylor is not that far behind.</p>
+This process of text sentiment analysis gives us some good indication of positivity or negativity. However what about more specific topics. What are people saying about her love life, her music, her friends? Although more difficult, it is possible to select tweets with words relating to these topics in a similar way. The bar-plot below shows the number of tweets about each topic - note that a tweet might fall into more than 1 category.
+<center>
+<img src="http://res.cloudinary.com/jsnape22/image/upload/v1526665688/TaylorSwift/Screen_Shot_2018-05-18_at_18.47.39.png" />
+</center>
+<p>So unsurprisingly the biggest talking point is her music, followed by tweets about her friends/enemies. Relatively few people have been talking about her love life! Perhaps since finding love with her currently boyfriend Joe Alwyn there isn’t as much to talk about as there used to be.</p>
+<p>Conclusion</p>
+<p>So to answer my original question of does Taylor swift have a big reputation? The evidence collected suggests that her reputation is similar to that of other celebrities tested, although perhaps not as much a Donald trump or Katy Perry. In general her reputation is positive and the majority of tweets are about her music, as oppose to gossip about her love life or enemies. Therefore since the new album has come out it looks like her reputation has made a recovery and now, she’s doing Ok.</p>
+<p>Of course there is plenty more I could have done with my twitter data. My initial analysis only uses a small sample of 10,000 tweets taken one day in early January. It is likely that the outcome of the analysis would change depending on when I extracted the data and how many tweets I looked at. An extension to this research might look at how variable tweets about Taylor are from one day to the next  and how her ‘reputation’ changes over time.  It may also look at more complex text analysis techniques, for example looking for patterns in the words and forming clusters of the words that often appear together (cluster analysis).</p>
+<p>As for twitter scraping, accessing tweets and running your own analysis is relatively simple and  accessible to anyone with a twitter account and R/python. There is much that can be found out by looking at tweets (aside from analysing celebrities) that could be of benefit to many organisations, e.g. monitoring public opinion over time, customer feedback or identifying new customers. It is a fascinating data source and I would highly recommend investigating it for yourself!</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/sentiment-analysis/">Sentiment Analysis</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/twitter/">Twitter</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/old-content/">Old Content</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/when-should-you-take-your-driving-test/" data-tooltip="When should you take your driving test?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/does-taylor-swift-have-a-big-reputation/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/01/does-taylor-swift-have-a-big-reputation/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/01/does-taylor-swift-have-a-big-reputation/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Jennifer Snape. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/when-should-you-take-your-driving-test/" data-tooltip="When should you take your driving test?">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/does-taylor-swift-have-a-big-reputation/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2018/01/does-taylor-swift-have-a-big-reputation/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2018/01/does-taylor-swift-have-a-big-reputation/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2F2018%2F01%2Fdoes-taylor-swift-have-a-big-reputation%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2F2018%2F01%2Fdoes-taylor-swift-have-a-big-reputation%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=%2F2018%2F01%2Fdoes-taylor-swift-have-a-big-reputation%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="http://res.cloudinary.com/jsnape22/image/upload/v1526332564/15876392_376070486087038_3280310198924738560_n.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Jennifer Snape</h4>
+    
+      <div id="about-card-bio">Interesting data science and mathematical projects!</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        statistician
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        London, Uk
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/05/new-blogdown-website-launch/">
+                <h3 class="media-heading">New Blogdown Website Launch!</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Welcome to my brand new and shiny ‘Blogdown’ website! I have wanted to transfer from my wordpress.com blog for a while now and last weekend I finally did some investigating into my alternative options. I considered using a self hosted wordpress.org site which would allow me more control over my site but would fundamentally still use the same wordpress framework. Generally this seems to be what most regular bloggers use.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/getting-started-with-r-shiny/">
+                <h3 class="media-heading">Getting Started with R Shiny</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Interactive Visualisations in R  This post was inspired by this competition, hosted by JumpingRivers. The competition asks you to extract data from their GitHub account containing the details of R groups and R ladies groups around the world. With this data it asks you to create a visualisation, of any kind. I’ve been working on my visualisation skills in R so I thought I would have a go at entering.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/04/my-top-10-films-about-maths/">
+                <h3 class="media-heading">My top 10 Films about Maths</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Although not quite a mainstream genre, there are plenty of films about mathematicians or featuring applications of maths. I find these films oddly comforting and I’ve watched many of the films on this list over and over again. I love discovering new mathematical films so I thought I’d put together a list of my favourites to help give someone else some inspiration for their next movie night in. Here is a countdown of my personal top 10 (plus honourable mentions).</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/code-first-girls-python-course-review/">
+                <h3 class="media-heading">Code First Girls: Python course review</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">For the last 8 weeks I have been taking the Code First Girls Spring 2018 Python course, hosted by IG. This is a free course for women who are students or recent graduates with the aim to encourage more women to get into programming and tech careers. These courses are hosted all over the UK, sponsored by various companies and universities.
+There are currently 3 different courses you can do: Beginner front-end programming, intermediate Python and intermediate Ruby.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/how-many-munros-have-i-climbed/">
+                <h3 class="media-heading">How many Munros have I climbed?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mapping the Munros in R using ggmap   After learning to plot graphs in R using ggplot2, the next visualisation technique in R I wanted to learn was how to plot geographical data on maps. There is a package called ggmap that works with ggplot2 to allow you to plot maps. You download a map of your chosen location from google maps and use it as a layer in the ggplot2 plotting system.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/03/does-everybody-love-black-panther/">
+                <h3 class="media-heading">Does everybody love Black Panther?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Web Scraping Reviews of Marvel’s Black Panther from Rotten Tomatoes using R   Last week I went to see the new and highly hyped Marvel film - Black Panther. I had been out the night before and was severely hungover. However my boyfriend would not allow me to lounge around in bed all day and instead made me get up and go into town. While we were out, we went to see Black Panther.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/who-has-won-the-most-brit-awards/">
+                <h3 class="media-heading">Who has won the most Brit Awards?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Visualising the Brit Awards using ggplot2   When I first learn R at university, we were taught to do all our graphs using the base R graph functions. I had no idea until earlier this year that there was another way! While searching for R help on different forums, I kept running into a plotting package called ‘ggplot2’ that everyone seemed to be using. I decided I needed to do my research and find out what all the hype is about.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/02/when-should-you-take-your-driving-test/">
+                <h3 class="media-heading">When should you take your driving test?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Mathematical Optimisation in R   Back before I moved to London and had to get rid of my car (sob), I used to do some of my best pondering while stuck in traffic. A thought that kept coming back to me was an optimisation problem about when is the best time to take your driving test. Driving lessons are expensive but a driving test is even more expensive - therefore how many lessons should you have before you take your test so as to spend the least amount of money?</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="/2018/01/does-taylor-swift-have-a-big-reputation/">
+                <h3 class="media-heading">Does Taylor Swift have a big reputation?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Twitter Scraping Using R     “Big Reputation, Big Reputation, Ooh you and me we’ve got Big Reputations”
+ Taylor Swift has just released her 6th studio album ‘Reputation’. The old Taylor is dead, and is her place is a new edgier Taylor, toughened from the years of media scrutiny, turbulent relationships and high profile celebrity feuds. As the title suggests, this is an album all about the contrast in how the world sees you to compared to who you really are and how a negative portrayal can affect your relationships.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         9 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://res.cloudinary.com/jsnape22/image/upload/v1526331556/23bg_18.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/2018\/01\/does-taylor-swift-have-a-big-reputation\/';
+          
+            this.page.identifier = '\/2018\/01\/does-taylor-swift-have-a-big-reputation\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
