@@ -6,10 +6,19 @@
     <description>Recent content on Jennifer Snape | Data Science</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ParkRunning and Crosstalking ! Interactive graphs &#43; Linear Regression in R</title>
+      <link>/2018/06/park-run-results/</link>
+      <pubDate>Sun, 10 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/park-run-results/</guid>
+      <description>Park Run Results : Brockwell park 10th June I am currently in training for a 10km running race. As part of my training I have started doing the park run every saturday morning to get some speed practice. This saturday I did the Brockwell park run in south london and got my second fastest parkrun time of 26 minutes 47 seconds. Park run publishes the complete results each week showing the times of all finishers including details about their gender, age band and their personal best for the course.</description>
+    </item>
     
     <item>
       <title>New Blogdown Website Launch!</title>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Running on Jennifer Snape | Data Science</title>
+    <link>/tags/running/</link>
+    <description>Recent content in Running on Jennifer Snape | Data Science</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/running/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Park Run Results in R</title>
+      <link>/2018/06/park-run-results-in-r/</link>
+      <pubDate>Sun, 10 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/park-run-results-in-r/</guid>
+      <description>###Visulising the results from Brockwell Park Run from 10th June 2018
+##Test</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,97 @@
+---
+title: ParkRunning and Crosstalking ! Interactive graphs + Linear Regression in R
+author: Jenny
+date: '2018-06-10'
+slug: park-run-results
+categories: [
+]
+tags: [
+]
+thumbnailImagePosition: "left"
+thumbnailImage: "http://res.cloudinary.com/jsnape22/image/upload/v1528664413/parkrun/new-parkrun-partnership-2.jpg"
+summary: I am currently in training for a 10km running race. As part of my training I have started doing the park run every saturday morning to get some speed practice. This saturday I did the Brockwell park run in south london and got my second fastest parkrun time of 26 minutes 47 seconds
+---
+
+
+## Park Run Results : Brockwell park 10th June
+
+I am currently in training for a 10km running race. As part of my training I have started doing the park run every saturday morning to get some speed practice. This saturday I did the Brockwell park run in south london and got my second fastest parkrun time of 26 minutes 47 seconds. Park run publishes the complete results each week showing the times of all finishers including details about their gender, age band and their personal best for the course. I decided to use this data to make some charts of the results this week. 
+
+### Interactive Mapping
+At work I have recently come across interactive mapping packages "plotly" and "crosstalk". These are relatively new packages that create interative charts (similar to those in Rshiny) but can be hosted in a html webpage without the need for a shiny server. This makes it easier to share interactive graphs as all you need is a single html document. 
+
+
+```{r echo=FALSE,message=FALSE, eval=TRUE, warning=FALSE}
+library(tidyverse)
+library(lubridate)
+library(plotly)
+library(crosstalk)
+
+
+ParkRun <- read_csv("ParkRun_10June.csv", col_types = cols(Time = col_time(format = "%M:%S")))
+ParkRun <- mutate(ParkRun, Time_mins = as.numeric(Time)/60, 
+                  Club2=ifelse(is.na(Club),1,2),
+                  valid=ifelse(is.na(Time),1,2),
+                  PB2 = substr(PB, 1, 7),
+                  PB3 = substr(ParkRun$PB,16,20),
+                  Type = case_when(
+                    PB=="New PB!" ~ 1,
+                    PB=="First Timer!" ~ 2,
+                    PB2=="PB stay" ~ 3
+                  )) %>%
+  mutate(PB3 = ifelse(Type==3, PB3, 1)) %>%
+  mutate(PB4 = as.numeric(ms(PB3))) %>%
+  mutate(PB5 = case_when(
+    is.na(PB4 & Gender=="M") ~ 1307,
+    is.na(PB4 & Gender=="F") ~ 1555,
+    TRUE ~ PB4
+  )) %>%
+  mutate( me = ifelse(Name=="Jennifer SNAPE", "Me", "Not Me"))
+```
+
+### Finishing times: Men vs Women | Plotly
+Plotly is a graphing library that makes interactive, publication-quality graphs online. Find out more [here](https://plot.ly/r/). It is easy to convert a gggplot to a plotly graph using the ggplotly function. 
+
+```{r echo=TRUE,message=FALSE, eval=TRUE, warning=FALSE}
+p=ggplot(ParkRun, aes(x = Time_mins, fill = Gender)) +
+        geom_histogram( binwidth = 1,
+                       position="identity", alpha=0.6)
+ggplotly(p)
+```
+
+### Finishing times vs Number of Runs | CrossTalk
+Crosstalk adds interactivity to HTML widgets. This means it works with the plotly graphs as shown below. The dataset you want to use has to be converted to a shared data enviroment and then it can be linked with a selecter (here I have checkbox). Note there is no correlation between Number of park Runs and time!   Find out more [here](https://rstudio.github.io/crosstalk/).  
+
+```{r echo=TRUE,message=FALSE, eval=TRUE, warning=FALSE}
+shared_PR <- SharedData$new(ParkRun)
+bscols(widths = c(3,NA,NA),
+  list(
+    filter_checkbox("Gender", "Gender", shared_PR, ~Gender, inline = TRUE)
+  ),
+  plot_ly(data = shared_PR, x = ~Time_mins, y = ~`Number of Runs`, color = ~Gender)
+)
+```
+
+
+### Predicting Finish Times!
+Finally for a bit of fun I had a go at predicting the run times based on the information given by Park Run. I did a multiple linear regression model and found that the following were significant in predicting run times:
+
+1. age / gender category, 
+2. whether a runner was part of a club or not
+3. whether this run was their first time
+4. Their previous personal best all to be signficant when predicting run times. (Because not all runners had a previous PB recorded I filled in the missing values with the median of the other runners based on gender.)
+
+The graph below shows the fitted values from the model plotted against the actual values with my run time highlighted!The model predicts my time to be almost 2 and half minutes slower. Although just from looking at the graph, the fit isn't too bad! 
+
+Note: This regression was a bit of fun and I did not check all the model assumptions held & evaluate the fit. 
+
+```{r echo=TRUE,message=FALSE, eval=TRUE, warning=FALSE}
+model1 <- lm(data=ParkRun, Time_mins~factor(Category)+factor(Club2)+factor(Type)+PB5)
+t=fitted.values(model1)
+t2 = filter(ParkRun, valid==2)
+Combined = cbind(t, t2)
+pal <- c("red", "skyblue")
+plot_ly(data=Combined, x =~Time_mins, y=~t, color=~factor(me), alpha = 0.7, colors= pal)
+```
+
+
